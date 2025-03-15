@@ -16,7 +16,8 @@ class BudgetEngine():
             ("TS", "transportation", 350),
             ("TR", "travel", 225),
             ("WD", "weed", 150),
-            ("CH", "charity", 80)
+            ("CH", "charity", 80),
+            ("CF", "coffee", 75)
         ]
         self.dict_data = data
         self.new_items_count = 0
