@@ -96,7 +96,8 @@ if __name__ == "__main__":
            #     print(f"            {key} -- [LOW]  ${remaining}")
            # else:
            #     print(f"            {key} -- ${remaining}")
-            print(f"""            {cat_name} --> {total_so_far}  ({cat_budget}) """)
+            print(f"""               {cat_name}:   {total_so_far}  ({cat_budget}) 
+            -------------------------------------""")
         print(f"""
             Total budget for the month is {total_budget}
             Total spend for the month is {total_spend}
@@ -119,12 +120,15 @@ if __name__ == "__main__":
         e = BudgetEngine(data)
         e.start()
         print("=========================")
-        # always write to file before exiting
-        with open(args.file, "w") as f:
-            print(f"about to write {e.new_items_count} new items to the file")
-            val = input("continue? (y/n)")
-            if val == "y":
-                json.dump(e.dict_data, f, indent=4)
+        
+        if e.new_items_count < 1:
+            pass
+        else:
+            with open(args.file, "w") as f:
+                print(f"about to write {e.new_items_count} new items to the file")
+                val = input("continue? (y/n)")
+                if val == "y":
+                    json.dump(e.dict_data, f, indent=4)
 
         print_summary(e)
 
